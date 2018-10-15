@@ -94,33 +94,15 @@ void main()
 {
     setRNGSeed();
 
-    /**
-    * 1) Get the position and normal of the shading point (screen space) from the GBuffer.
-    */
-
+    //1) Get the position and normal of the shading point (screen space) from the GBuffer.
     vec4 shadePosition = texture(texturePosition, texCoords);
     vec4 shadeNormal = texture(textureNormal, texCoords);
 
-    /**
-    * 1) Build the shading normal's frame (TBN).
-         ( use getTangent() )
-    */
+    //1) Build the shading normal's frame (TBN).
     // TBN - M3[V3(Tangent)|V3(Bitangent)|V3(Normal)]
     vec3 shadeTangent = getTangent(shadeNormal.xyz);
     vec3 shadeBitangent = normalize(cross(shadeNormal.xyz, shadeTangent));
     mat3 TBN = mat3(shadeTangent, shadeBitangent, shadeNormal);
-
-    /**
-    For each sample:
-    * 1) Get a sample direction (view space).
-    * 2) Align the sample hemisphere to the shading normal.
-    * 3) Place the sample at the shading point (use the RADIUS constant).
-    * 4) Get the depth value at the sample's position using the depth buffer.
-    *    - Project the sample to screen space ie. pixels (NDC).
-    *    - Transform the sample in NDC coordinates [-1,1] to texture coordinates [0,1].
-    * 5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
-         (use some epsilon via the BIAS constant)
-    */
 
     color = vec3(0.f);
 
@@ -150,19 +132,15 @@ void main()
                     0.0, 0.0, 0.5, 0.0,
                     0.5, 0.5, 0.5, 1.0
             );
-
         screenPoint = biasMatrix * screenPoint;
         screenPoint.xyz = screenPoint.xyz / screenPoint.w;
 
         //5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
         //(use some epsilon via the BIAS constant)
-
         float depthAtPos = texture(texturePosition, screenPoint.xy).z;
         float visible = depthAtPos < (shadingPoint.z - BIAS) ? 1.f : 0.f;
 
         color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact);// * depthRange(alignedDir.xyz, depthAtPos);
-        //color += vec3(shadePosition.xyz);
-
     }
     color = color / N_SAMPLES;
 }

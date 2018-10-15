@@ -153,12 +153,6 @@ struct SSAOPass : RenderPass {
     virtual void render() override {
         // I. Geometry pass (GBuffer)
         // =======================================================================================
-
-        /**
-         * 1) Bind the GBuffer.
-         */
-	    // TODO: Implement this
-
         glBindFramebuffer(GL_FRAMEBUFFER, gbuffer);
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -169,15 +163,6 @@ struct SSAOPass : RenderPass {
         glm::mat4 model, view, projection;
         camera.Update();
         camera.GetMatricies(projection, view, model);
-
-        /**
-         * 1) Use the shader for the geometry pass.
-         * 2) Pass the necessary uniforms.
-         * 3) Bind vertex array of current object.
-         * 4) Draw its triangles.
-         * 5) Unbind the vertex array.
-         */
-	    // TODO: Implement this
 
         //1) Use the shader for the geometry pass.
         glUseProgram(geometryShader);
@@ -205,27 +190,11 @@ struct SSAOPass : RenderPass {
         
         // II. SSAO pass
         // =======================================================================================
-        /**
-         * 1) Bind the screen buffer (postprocess_fboScreen).
-         */
-	    // TODO: Implement this
-
         glBindFramebuffer(GL_FRAMEBUFFER, postprocess_fboScreen);
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glDisable(GL_DEPTH_TEST);
-
-        /**
-         * 1) Use the shader for the SSAO pass.
-         * 2) Pass the necessary uniforms.
-         * 3) Bind the textures for position and normal from the GBuffer.
-         * 4) Bind vertex array of the quad representing the screen texture.
-         * 5) Draw the quad.
-         * 6) Unbind the vertex array.
-         * 7) Unbind the textures.
-         */
-	    // TODO: Implement this
 
 	    //1) Use the shader for the SSAO pass.
         glUseProgram(shaderSSAO);
