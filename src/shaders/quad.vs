@@ -9,7 +9,6 @@ out vec2 texCoords;
 
 void main()
 {
-
     FragPos = position;
     texCoords = UV;
 

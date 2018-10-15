@@ -140,7 +140,7 @@ void main()
         float depthAtPos = texture(texturePosition, screenPoint.xy).z;
         float visible = depthAtPos < (shadingPoint.z - BIAS) ? 1.f : 0.f;
 
-        color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact);// * depthRange(alignedDir.xyz, depthAtPos);
+        color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact);
     }
     color = color / N_SAMPLES;
 }
