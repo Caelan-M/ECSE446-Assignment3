@@ -116,31 +116,43 @@ void main()
         //2) Align the sample hemisphere to the shading normal.
         vec3 alignedDir = TBN * sampleDir;
 
-        //3) Place the sample at the shading point (use the RADIUS constant).
-        // Shading point = starting position + (aligned direction * distance traveled)
-        vec3 shadingPoint = shadePosition.xyz + (alignedDir * RADIUS);
+        //sampling many points along the sampled direction
+        int pps = 10; //(how many points per sample direction)
+        for(int j = 0; j < pps; j++){
+            //3) Place the sample at the shading point (use the RADIUS constant).
+            // Shading point = starting position + (aligned direction * distance traveled)
+            vec3 shadingPoint = shadePosition.xyz + (alignedDir * RADIUS / 2 * j);
 
-        //4) Get the depth value at the sample's position using the depth buffer.
-        // - Project the sample to screen space ie. pixels (NDC).
-        // take shading point and project onto screen space
-        vec4 screenPoint = projection * vec4(shadingPoint, 1.f);
+            //4) Get the depth value at the sample's position using the depth buffer.
+            // - Project the sample to screen space ie. pixels (NDC).
+            // take shading point and project onto screen space
+            vec4 screenPoint = projection * vec4(shadingPoint, 1.f);
 
-        // - Transform the sample in NDC coordinates [-1,1] to texture coordinates [0,1].
-        mat4 biasMatrix = mat4(
-                    0.5, 0.0, 0.0, 0.0,
-                    0.0, 0.5, 0.0, 0.0,
-                    0.0, 0.0, 0.5, 0.0,
-                    0.5, 0.5, 0.5, 1.0
-            );
-        screenPoint = biasMatrix * screenPoint;
-        screenPoint.xyz = screenPoint.xyz / screenPoint.w;
+            // - Transform the sample in NDC coordinates [-1,1] to texture coordinates [0,1].
+            mat4 biasMatrix = mat4(
+                        0.5, 0.0, 0.0, 0.0,
+                        0.0, 0.5, 0.0, 0.0,
+                        0.0, 0.0, 0.5, 0.0,
+                        0.5, 0.5, 0.5, 1.0
+                );
+            screenPoint = biasMatrix * screenPoint;
+            screenPoint.xyz = screenPoint.xyz / screenPoint.w;
 
-        //5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
-        //(use some epsilon via the BIAS constant)
-        float depthAtPos = texture(texturePosition, screenPoint.xy).z;
-        float visible = depthAtPos < (shadingPoint.z - BIAS) ? 1.f : 0.f;
+            //5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
+            //(use some epsilon via the BIAS constant)
+            float depthAtPos = texture(texturePosition, screenPoint.xy).z;
+            //float visible = depthAtPos < (shadingPoint.z - BIAS) ? 1.f : 0.f;
 
-        color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact);
+            //trying cosines
+            vec3 wi = normalize(sampleDir.xyz);
+            vec3 yPos = vec3(screenPoint.x, screenPoint.y, depthAtPos);
+            vec3 x2y = normalize(yPos - shadePosition.xyz);
+            float visible = dot(x2y, wi);
+            visible = 1 - max(0.f, visible);
+
+            color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact) / pps;
+        }
+
     }
     color = color / N_SAMPLES;
 }

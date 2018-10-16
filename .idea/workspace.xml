@@ -11,8 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f34df4-5a1b-4985-9007-348ec01bbdeb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/renderpasses/ssao.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderpasses/ssao.h" afterDir="false" />
+    <list default="true" id="24f34df4-5a1b-4985-9007-348ec01bbdeb" name="Default Changelist" comment="cleaned up code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/a3/cbox/tinyrender/cbox_ssao_realtime.exr" beforeDir="false" afterPath="$PROJECT_DIR$/data/a3/cbox/tinyrender/cbox_ssao_realtime.exr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/ssao.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/ssao.fs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -62,12 +63,12 @@
     <session id="-1245441692">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -89,8 +90,9 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="3" />
-          <entry key="fs" value="1832" />
+          <entry key="fs" value="2428" />
           <entry key="h" value="3739" />
+          <entry key="txt" value="17" />
           <entry key="vs" value="77" />
         </counts>
       </usages-collector>
@@ -98,7 +100,7 @@
         <counts>
           <entry key="Doxygen file" value="1" />
           <entry key="ObjectiveC" value="3741" />
-          <entry key="PLAIN_TEXT" value="1909" />
+          <entry key="PLAIN_TEXT" value="2522" />
         </counts>
       </usages-collector>
     </session>
@@ -108,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderpasses/ssao.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
+            <state relative-caret-position="2310">
               <caret line="154" column="98" selection-start-line="154" selection-start-column="98" selection-end-line="154" selection-end-column="98" />
             </state>
           </provider>
@@ -117,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/shaders/ssao.fs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="15">
+              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -135,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shaders/quad.vs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+            <state relative-caret-position="150">
+              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -191,8 +193,8 @@
         <option value="$PROJECT_DIR$/src/integrators/ao.h" />
         <option value="$PROJECT_DIR$/src/core/math.h" />
         <option value="$PROJECT_DIR$/src/integrators/ro.h" />
-        <option value="$PROJECT_DIR$/src/shaders/quad.vs" />
         <option value="$PROJECT_DIR$/src/renderpasses/ssao.h" />
+        <option value="$PROJECT_DIR$/src/shaders/quad.vs" />
         <option value="$PROJECT_DIR$/src/shaders/ssao.fs" />
       </list>
     </option>
@@ -307,7 +309,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tinyrender" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../data/a3/spaceship/tinyrender/spaceship_ssao_realtime.toml" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tinyrender" TARGET_NAME="tinyrender" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tinyrender" RUN_TARGET_NAME="tinyrender">
+    <configuration name="tinyrender" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../data/a3/cbox/tinyrender/cbox_ssao_realtime.toml" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tinyrender" TARGET_NAME="tinyrender" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tinyrender" RUN_TARGET_NAME="tinyrender">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -331,24 +333,25 @@
       <workItem from="1538699385702" duration="5603000" />
       <workItem from="1539372021710" duration="255000" />
       <workItem from="1539394283399" duration="67090000" />
-      <workItem from="1539566561482" duration="310000" />
+      <workItem from="1539566561482" duration="4026000" />
+      <workItem from="1539727293292" duration="1767000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73453000" />
+    <option name="totallyTimeSpent" value="78936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="733" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17851374" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18093699" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.36037442" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32917318" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39937598" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -369,6 +372,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cleaned up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -520,6 +527,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderpasses/ssao.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2310">
+          <caret line="154" column="98" selection-start-line="154" selection-start-column="98" selection-end-line="154" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/integrators/ao.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -529,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shaders/quad.vs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -544,17 +558,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderpasses/ssao.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="154" column="98" selection-start-line="154" selection-start-column="98" selection-end-line="154" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shaders/ssao.fs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="15">
+          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
         </state>
       </provider>
     </entry>
