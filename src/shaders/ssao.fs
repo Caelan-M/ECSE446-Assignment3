@@ -117,12 +117,12 @@ void main()
         vec3 alignedDir = TBN * sampleDir;
 
         //sampling many points along the sampled direction
-        int pps = 12; //(how many points per sample direction)
+        int pps = 36; //(how many points per sample direction)
         vec3 tempColor = vec3(1.f);
         for(int j = 0; j < pps; j++){
             //3) Place the sample at the shading point (use the RADIUS constant).
             // Shading point = starting position + (aligned direction * distance traveled)
-            vec3 shadingPoint = shadePosition.xyz + (alignedDir * j * RADIUS);
+            vec3 shadingPoint = shadePosition.xyz + (alignedDir * j * RADIUS / 3);
 
             //4) Get the depth value at the sample's position using the depth buffer.
             // - Project the sample to screen space ie. pixels (NDC).
@@ -142,11 +142,12 @@ void main()
             //5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
             //(use some epsilon via the BIAS constant)
             float depthAtPos = texture(texturePosition, depthPoint.xy).z;
-            float visible = (depthAtPos > (shadingPoint.z - BIAS) ? 1.f : 0.f) * smoothstep(0.0, 1.0, j/pps);
+            float visible = (depthAtPos > (shadingPoint.z - BIAS) ? 1.f : 0.f) * smoothstep(0.0, 1.0, j / pps);
 
+            //Check if point on direction is occluded, if so, break
             if(depthAtPos > (shadingPoint.z - BIAS)){
                 tempColor = vec3(visible);
-                j = pps;
+                break;
             }
 
         }
