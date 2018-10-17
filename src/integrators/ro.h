@@ -27,10 +27,8 @@ struct ROIntegrator : Integrator {
 
     v3f render(const Ray& ray, Sampler& sampler) const override {
         v3f Li(0.f);
-	    // TODO: Implement this
 
         SurfaceInteraction surfInt;
-//        SurfaceInteraction i;
 
         if(scene.bvh -> intersect(ray, surfInt)){
 
@@ -50,40 +48,6 @@ struct ROIntegrator : Integrator {
             if(!scene.bvh -> intersect(sampleRay, i))
                 Li =  (m_exponent + 2) * INV_TWOPI * v3f(1.f) * std::max(0.f, cosFact) * std::pow(std::max(sampleDir.z, 0.f), m_exponent) / (pdf);
         }
-
-
-//        if(scene.bvh->intersect(ray, surfInt)) {
-//
-//            glm::vec3 sampleDir = Warp::squareToPhongLobe(sampler.next2D(), m_exponent);
-//
-//            glm::vec3 reflectDir = reflect(surfInt.wo);
-//            surfInt.wi = glm::toMat4(glm::quat(v3f(0.f,0.f,1.f), reflectDir)) * v4f(sampleDir, 1.f);
-//            surfInt.wi = glm::normalize(surfInt.wi);
-//
-//            float cosFact4 = dot(surfInt.frameNs.n, surfInt.wi);
-//            float cosFact1 = surfInt.wi.z;
-//            surfInt.wi = surfInt.frameNs.toWorld(surfInt.wi);
-//            float cosFact = surfInt.wi.z;
-//            //glm::vec3 reflectDir = reflect(surfInt.wo);
-//            //surfInt.wi = glm::normalize(glm::mat4(glm::quat(v3f(0.f,0.f,1.f), reflectDir)) * v4f(surfInt.wi, 1.f));
-//
-//
-//
-//            //surfInt.wi = surfInt.frameNs.toWorld(surfInt.wi);
-//
-//            //Ray sampleRay(surfInt.p, surfInt.wi, Epsilon, scene.aabb.getBSphere().radius * 0.5);
-//            Ray sampleRay(surfInt.p, surfInt.wi);
-//            if(!scene.bvh->intersect(sampleRay, i)) {
-//
-//                float cosFact5 = dot(surfInt.frameNs.n, surfInt.wi);
-//                float pdf = Warp::squareToPhongLobePdf(sampleDir, m_exponent);
-//                float power = std::pow(std::max(0.f, sampleDir.z), m_exponent);
-//
-//                Li = v3f(1.f) * (m_exponent + 2.f) * INV_TWOPI / pdf * power;// * std::max(0.f, cosFact5);
-//
-//            }
-//        }
-
         return Li;
     }
 };
