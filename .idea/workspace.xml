@@ -90,7 +90,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="3" />
-          <entry key="fs" value="2428" />
+          <entry key="fs" value="3251" />
           <entry key="h" value="3739" />
           <entry key="txt" value="17" />
           <entry key="vs" value="77" />
@@ -100,7 +100,7 @@
         <counts>
           <entry key="Doxygen file" value="1" />
           <entry key="ObjectiveC" value="3741" />
-          <entry key="PLAIN_TEXT" value="2522" />
+          <entry key="PLAIN_TEXT" value="3345" />
         </counts>
       </usages-collector>
     </session>
@@ -110,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderpasses/ssao.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2310">
-              <caret line="154" column="98" selection-start-line="154" selection-start-column="98" selection-end-line="154" selection-end-column="98" />
+            <state relative-caret-position="-124">
+              <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -119,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/shaders/ssao.fs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+            <state relative-caret-position="540">
+              <caret line="144" column="103" selection-start-line="144" selection-start-column="103" selection-end-line="144" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -339,7 +339,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78936000" />
+    <option name="totallyTimeSpent" value="86105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="733" extended-state="6" />
@@ -351,7 +351,7 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.36037442" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32917318" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32917318" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39937598" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -529,8 +529,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderpasses/ssao.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
-          <caret line="154" column="98" selection-start-line="154" selection-start-column="98" selection-end-line="154" selection-end-column="98" />
+        <state relative-caret-position="-124">
+          <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -560,8 +560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shaders/ssao.fs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+        <state relative-caret-position="540">
+          <caret line="144" column="103" selection-start-line="144" selection-start-column="103" selection-end-line="144" selection-end-column="103" />
         </state>
       </provider>
     </entry>

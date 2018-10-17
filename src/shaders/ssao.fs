@@ -117,11 +117,12 @@ void main()
         vec3 alignedDir = TBN * sampleDir;
 
         //sampling many points along the sampled direction
-        int pps = 10; //(how many points per sample direction)
+        int pps = 12; //(how many points per sample direction)
+        vec3 tempColor = vec3(1.f);
         for(int j = 0; j < pps; j++){
             //3) Place the sample at the shading point (use the RADIUS constant).
             // Shading point = starting position + (aligned direction * distance traveled)
-            vec3 shadingPoint = shadePosition.xyz + (alignedDir * RADIUS / 2 * j);
+            vec3 shadingPoint = shadePosition.xyz + (alignedDir * j * RADIUS);
 
             //4) Get the depth value at the sample's position using the depth buffer.
             // - Project the sample to screen space ie. pixels (NDC).
@@ -135,24 +136,21 @@ void main()
                         0.0, 0.0, 0.5, 0.0,
                         0.5, 0.5, 0.5, 1.0
                 );
-            screenPoint = biasMatrix * screenPoint;
-            screenPoint.xyz = screenPoint.xyz / screenPoint.w;
+            vec4 depthPoint = biasMatrix * screenPoint;
+            depthPoint.xyz = depthPoint.xyz / depthPoint.w;
 
             //5) Check for occlusion using the sample's depth value and the depth value at the sample's position.
             //(use some epsilon via the BIAS constant)
-            float depthAtPos = texture(texturePosition, screenPoint.xy).z;
-            //float visible = depthAtPos < (shadingPoint.z - BIAS) ? 1.f : 0.f;
+            float depthAtPos = texture(texturePosition, depthPoint.xy).z;
+            float visible = (depthAtPos > (shadingPoint.z - BIAS) ? 1.f : 0.f) * smoothstep(0.0, 1.0, j/pps);
 
-            //trying cosines
-            vec3 wi = normalize(sampleDir.xyz);
-            vec3 yPos = vec3(screenPoint.x, screenPoint.y, depthAtPos);
-            vec3 x2y = normalize(yPos - shadePosition.xyz);
-            float visible = dot(x2y, wi);
-            visible = 1 - max(0.f, visible);
+            if(depthAtPos > (shadingPoint.z - BIAS)){
+                tempColor = vec3(visible);
+                j = pps;
+            }
 
-            color += vec3(visible) * INV_PI / pdf * max(0.f, cosFact) / pps;
         }
-
+        color += tempColor * INV_PI / pdf * max(0.f, cosFact);
     }
     color = color / N_SAMPLES;
 }
